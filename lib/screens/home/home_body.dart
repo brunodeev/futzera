@@ -3,35 +3,51 @@ import 'package:soccer_app/constants/colors.dart';
 import 'package:soccer_app/models/banner_model.dart';
 import 'package:soccer_app/screens/home/product_grid.dart';
 
-class HomeBody extends StatelessWidget {
+import '../../widgets/banner.dart';
+import '../../widgets/dot_indicator.dart';
+
+class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final bannerImages = BannerImg.banner;
+  State<HomeBody> createState() => _HomeBodyState();
+}
 
+class _HomeBodyState extends State<HomeBody> {
+  var _selectedItem = 0;
+  @override
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
+          const SizedBox(height: 15),
           Container(
             height: 160,
-            decoration: BoxDecoration(color: Colors.red),
             child: PageView.builder(
+              onPageChanged: (index) {
+                setState(() {
+                  _selectedItem = index % banner.length;
+                });
+              },
               scrollDirection: Axis.horizontal,
-              itemCount: bannerImages.length,
               itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                        image:
-                            AssetImage('assets/images/messi_and_cristiano.png'),
-                        fit: BoxFit.cover,
-                      )),
+                return BannerImage(
+                  index: banner[index % banner.length],
                 );
               },
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ...List.generate(
+                banner.length,
+                (index) => Indicator(
+                  isActive: _selectedItem == index ? true : false,
+                ),
+              ),
+            ],
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15),
