@@ -13,7 +13,7 @@ class Indicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
-      margin: EdgeInsets.symmetric(horizontal: 3, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 8),
       height: 8,
       width: isActive ? 22 : 8,
       decoration: BoxDecoration(

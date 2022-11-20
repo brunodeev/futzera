@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:soccer_app/constants/app_title.dart';
 import 'package:soccer_app/constants/colors.dart';
+import 'package:soccer_app/mobx/controller.dart';
 import 'package:soccer_app/screens/home/home_body.dart';
 import 'package:soccer_app/screens/home/home_drawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final controllerSearch = Controller();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -25,9 +36,11 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         title: const AppTitle(),
         actions: [
-          GestureDetector(
-            child: const Icon(Icons.search_rounded),
-            onTap: () {},
+          IconButton(
+            icon: Icon(Icons.search_rounded),
+            onPressed: () {
+              controllerSearch.setVisibility();
+            },
           ),
           SizedBox(width: size.width * 0.03),
           GestureDetector(
@@ -37,7 +50,7 @@ class HomePage extends StatelessWidget {
           SizedBox(width: size.width * 0.03),
         ],
       ),
-      body: const HomeBody(),
+      body: Observer(builder: (_) => HomeBody()),
     );
   }
 }

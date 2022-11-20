@@ -17,7 +17,7 @@ class _ProductGridState extends State<ProductGrid> {
       name: 'Barcelona',
       description: 'Camisa principal do FC Barcelona para a temporada 2022/23.',
       category: 'Camisas',
-      price: 300.00,
+      price: 350.00,
       image: 'assets/images/barcelona.png',
     ),
     Product(
@@ -26,7 +26,7 @@ class _ProductGridState extends State<ProductGrid> {
       description:
           'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
       category: 'Camisas',
-      price: 400.00,
+      price: 350.00,
       image: 'assets/images/real.png',
     ),
     Product(
@@ -35,7 +35,7 @@ class _ProductGridState extends State<ProductGrid> {
       description:
           'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
       category: 'Camisas',
-      price: 400.00,
+      price: 300.00,
       image: 'assets/images/chelse.png',
     ),
     Product(
@@ -44,7 +44,7 @@ class _ProductGridState extends State<ProductGrid> {
       description:
           'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
       category: 'Camisas',
-      price: 400.00,
+      price: 350.00,
       image: 'assets/images/liv.png',
     ),
     Product(
@@ -53,17 +53,17 @@ class _ProductGridState extends State<ProductGrid> {
       description:
           'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
       category: 'Camisas',
-      price: 400.00,
+      price: 300.00,
       image: 'assets/images/arsenal.png',
     ),
     Product(
       id: 6,
-      name: 'Man. United',
+      name: 'Man. City',
       description:
           'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
       category: 'Camisas',
-      price: 400.00,
-      image: 'assets/images/manutd.jpg',
+      price: 350.00,
+      image: 'assets/images/mancity.jpg',
     ),
   ];
   @override
