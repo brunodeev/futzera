@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:soccer_app/constants/colors.dart';
 import 'package:soccer_app/models/banner_model.dart';
 import 'package:soccer_app/screens/home/product_grid.dart';
-import 'package:soccer_app/widgets/search_form.dart';
 
 import '../../constants/section_label.dart';
 import '../../widgets/banner.dart';
 import '../../widgets/dot_indicator.dart';
 
 class HomeBody extends StatefulWidget {
-  HomeBody({super.key});
+  const HomeBody({super.key});
   @override
   State<HomeBody> createState() => _HomeBodyState();
 }

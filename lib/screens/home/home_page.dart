@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx/mobx.dart';
 import 'package:soccer_app/constants/app_title.dart';
 import 'package:soccer_app/constants/colors.dart';
 import 'package:soccer_app/mobx/controller.dart';
@@ -37,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         title: const AppTitle(),
         actions: [
           IconButton(
-            icon: Icon(Icons.search_rounded),
+            icon: const Icon(Icons.search_rounded),
             onPressed: () {
               controllerSearch.setVisibility();
             },
@@ -50,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(width: size.width * 0.03),
         ],
       ),
-      body: HomeBody(),
+      body: const HomeBody(),
     );
   }
 }
