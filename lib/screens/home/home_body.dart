@@ -4,6 +4,7 @@ import 'package:soccer_app/models/banner_model.dart';
 import 'package:soccer_app/screens/home/product_grid.dart';
 import 'package:soccer_app/widgets/search_form.dart';
 
+import '../../constants/section_label.dart';
 import '../../widgets/banner.dart';
 import '../../widgets/dot_indicator.dart';
 
@@ -49,25 +50,13 @@ class _HomeBodyState extends State<HomeBody> {
               ),
             ],
           ),
+          const SizedBox(height: 15),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Tendências',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: kPrimaryColor.withOpacity(0.8)),
-                      ),
-                    ],
-                  ),
-                ),
-                const ProductGrid(),
+              children: const [
+                SectionLabel(),
+                ProductGrid(),
               ],
             ),
           ),

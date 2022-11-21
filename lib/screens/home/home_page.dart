@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(width: size.width * 0.03),
         ],
       ),
-      body: Observer(builder: (_) => HomeBody()),
+      body: HomeBody(),
     );
   }
 }
