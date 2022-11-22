@@ -12,67 +12,7 @@ class ProductGrid extends StatefulWidget {
 }
 
 class _ProductGridState extends State<ProductGrid> {
-  List<Product> product = [
-    Product(
-      id: 1,
-      name: 'Barcelona',
-      label: 'Camisa Barcelona 2022/23',
-      description: 'Camisa principal do FC Barcelona para a temporada 2022/23.',
-      category: 'Camisas',
-      price: 350.00,
-      image: 'assets/images/barcelona.png',
-    ),
-    Product(
-      id: 2,
-      name: 'Real Madrid',
-      label: 'Camisa Real Madrid 2022/23',
-      description:
-          'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
-      category: 'Camisas',
-      price: 350.00,
-      image: 'assets/images/real.png',
-    ),
-    Product(
-      id: 3,
-      name: 'Chelsea',
-      label: 'Camisa Chelsea 2022/23',
-      description:
-          'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
-      category: 'Camisas',
-      price: 300.00,
-      image: 'assets/images/chelse.png',
-    ),
-    Product(
-      id: 4,
-      name: 'Liverpool',
-      label: 'Camisa Liverpool 2022/23',
-      description:
-          'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
-      category: 'Camisas',
-      price: 350.00,
-      image: 'assets/images/liv.png',
-    ),
-    Product(
-      id: 5,
-      name: 'Arsenal',
-      label: 'Camisa Arsenal 2022/23',
-      description:
-          'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
-      category: 'Camisas',
-      price: 300.00,
-      image: 'assets/images/arsenal.png',
-    ),
-    Product(
-      id: 6,
-      name: 'Man. City',
-      label: 'Camisa Manchester City 2022/23',
-      description:
-          'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
-      category: 'Camisas',
-      price: 350.00,
-      image: 'assets/images/mancity.jpg',
-    ),
-  ];
+  final productList = product;
 
   @override
   Widget build(BuildContext context) {
@@ -83,19 +23,22 @@ class _ProductGridState extends State<ProductGrid> {
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
-          mainAxisExtent: 180,
+          mainAxisExtent: 200,
           childAspectRatio: 0.5),
       itemCount: product.length,
       itemBuilder: (_, index) => GestureDetector(
         child: ProductCard(
             name: product[index].name,
-            image: product[index].image,
+            image: product[index].images[0],
             price: product[index].price),
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => ProductDetail(
-                  label: product[index].label, img: product[index].image),
+                label: product[index].label,
+                list: product[index].images,
+                price: product[index].price.toStringAsFixed(2),
+              ),
             ),
           );
         },

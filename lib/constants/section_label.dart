@@ -19,6 +19,10 @@ class SectionLabel extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 color: kPrimaryColor.withOpacity(0.8)),
           ),
+          Icon(
+            Icons.local_fire_department_outlined,
+            color: kPrimaryColor.withOpacity(0.8),
+          ),
         ],
       ),
     );

@@ -32,8 +32,10 @@ class HomeDrawer extends StatelessWidget {
             ),
             TextDrawer(
                 text: 'Página Inicial',
-                route: () => Navigator.pushNamedAndRemoveUntil(
-                    context, '/', (route) => false)),
+                route: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/', (route) => false);
+                }),
             TextDrawer(text: 'Categorias', route: () {})
           ],
         ),

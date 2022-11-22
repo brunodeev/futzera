@@ -9,19 +9,19 @@ part of 'controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$Controller on ControllerBase, Store {
-  late final _$isVisibleAtom =
-      Atom(name: 'ControllerBase.isVisible', context: context);
+  late final _$isPressedAtom =
+      Atom(name: 'ControllerBase.isPressed', context: context);
 
   @override
-  bool get isVisible {
-    _$isVisibleAtom.reportRead();
-    return super.isVisible;
+  bool get isPressed {
+    _$isPressedAtom.reportRead();
+    return super.isPressed;
   }
 
   @override
-  set isVisible(bool value) {
-    _$isVisibleAtom.reportWrite(value, super.isVisible, () {
-      super.isVisible = value;
+  set isPressed(bool value) {
+    _$isPressedAtom.reportWrite(value, super.isPressed, () {
+      super.isPressed = value;
     });
   }
 
@@ -29,11 +29,11 @@ mixin _$Controller on ControllerBase, Store {
       ActionController(name: 'ControllerBase', context: context);
 
   @override
-  dynamic setVisibility() {
+  dynamic getPress() {
     final _$actionInfo = _$ControllerBaseActionController.startAction(
-        name: 'ControllerBase.setVisibility');
+        name: 'ControllerBase.getPress');
     try {
-      return super.setVisibility();
+      return super.getPress();
     } finally {
       _$ControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -42,7 +42,7 @@ mixin _$Controller on ControllerBase, Store {
   @override
   String toString() {
     return '''
-isVisible: ${isVisible}
+isPressed: ${isPressed}
     ''';
   }
 }

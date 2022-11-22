@@ -5,10 +5,10 @@ class Controller = ControllerBase with _$Controller;
 
 abstract class ControllerBase with Store {
   @observable
-  bool isVisible = false;
+  bool isPressed = false;
 
   @action
-  setVisibility() {
-    isVisible = !isVisible;
+  getPress() {
+    isPressed = !isPressed;
   }
 }

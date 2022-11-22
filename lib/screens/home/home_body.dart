@@ -17,13 +17,14 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: const EdgeInsets.all(15),
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          const SizedBox(height: 15),
           SizedBox(
             height: 160,
             child: PageView.builder(
+              physics: const BouncingScrollPhysics(),
               onPageChanged: (index) {
                 setState(() {
                   _selectedItem = index % banner.length;
@@ -49,14 +50,11 @@ class _HomeBodyState extends State<HomeBody> {
             ],
           ),
           const SizedBox(height: 15),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: const [
-                SectionLabel(),
-                ProductGrid(),
-              ],
-            ),
+          Column(
+            children: const [
+              SectionLabel(),
+              ProductGrid(),
+            ],
           ),
         ],
       ),
