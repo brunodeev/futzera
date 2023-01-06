@@ -1,16 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/colors.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
+    required this.id,
     required this.name,
     required this.image,
     super.key,
     required this.price,
+    required this.type,
   });
 
-  final String name, image;
-  final double price;
+  final int id;
+  final String name, image, type;
+  final int price;
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +63,18 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // addToFavorite(
+                        //     id: id,
+                        //     name: name,
+                        //     price: price,
+                        //     type: type,
+                        //     image: image);
+                      },
                       icon: const Icon(
                         Icons.shopping_cart,
                         size: 20,
-                        color: Colors.greenAccent,
+                        color: Colors.grey,
                       ),
                     )
                   ],
@@ -75,4 +86,22 @@ class ProductCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Future addToFavorite({
+  required int id,
+  required String name,
+  required String type,
+  required double price,
+  required String image,
+}) async {
+  final users = FirebaseFirestore.instance.collection('Favorites').doc(type);
+  await users.set({
+    'id': id,
+    'name': name,
+    'price': price,
+    'type': type,
+    'image': image,
+  });
+  return 'Created';
 }
