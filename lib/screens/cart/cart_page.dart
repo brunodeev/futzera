@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:soccer_app/data/firebase_data.dart';
 
 import '../../constants/colors.dart';
+import '../../widgets/product_card.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -18,11 +21,40 @@ class CartPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: kPrimaryColor,
         elevation: 0,
-        title: const Text('Detalhes'),
+        title: const Text('Carrinho'),
       ),
-      body: Column(
-        children: const [Text('Olá')],
-      ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: getCartList(),
+          builder: (_, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+              case ConnectionState.waiting:
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.grey[900],
+                  ),
+                );
+              case ConnectionState.active:
+              case ConnectionState.done:
+                return ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (_, index) {
+                    final DocumentSnapshot doc = snapshot.data!.docs[index];
+                    return GestureDetector(
+                      child: ProductCard(
+                        id: doc['id'],
+                        name: doc['name'],
+                        type: doc['type'],
+                        price: doc['price'],
+                        image: doc['image'],
+                      ),
+                      onTap: () {},
+                    );
+                  },
+                );
+            }
+          }),
     );
   }
 }

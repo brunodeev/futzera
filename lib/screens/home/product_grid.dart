@@ -4,7 +4,7 @@ import 'package:soccer_app/data/firebase_data.dart';
 import '../../widgets/product_card.dart';
 
 class ProductGrid extends StatefulWidget {
-  const ProductGrid(BuildContext context, {super.key});
+  const ProductGrid({super.key});
 
   @override
   State<ProductGrid> createState() => _ProductGridState();
@@ -13,7 +13,7 @@ class ProductGrid extends StatefulWidget {
 class _ProductGridState extends State<ProductGrid> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 1000,
       child: StreamBuilder<QuerySnapshot>(
           stream: getList(),

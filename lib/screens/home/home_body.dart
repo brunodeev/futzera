@@ -51,7 +51,7 @@ class _HomeBodyState extends State<HomeBody> {
           ),
           const SizedBox(height: 15),
           const SectionLabel(),
-          ProductGrid(context),
+          const ProductGrid(),
         ],
       ),
     );

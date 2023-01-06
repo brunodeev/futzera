@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/colors.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({
     required this.id,
     required this.name,
@@ -16,6 +16,12 @@ class ProductCard extends StatelessWidget {
   final String name, image, type;
   final int price;
 
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  var isCart = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +37,7 @@ class ProductCard extends StatelessWidget {
               topRight: Radius.circular(15),
             ),
             child: Image.asset(
-              image,
+              widget.image,
               height: 110,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -45,7 +51,7 @@ class ProductCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      name,
+                      widget.name,
                       style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
@@ -57,24 +63,33 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'R\$ ${price.toStringAsFixed(2)}',
+                        'R\$ ${widget.price.toStringAsFixed(2)}',
                         style: const TextStyle(
                             color: kSecondaryColor, fontSize: 14),
                       ),
                     ),
                     IconButton(
                       onPressed: () {
-                        // addToFavorite(
-                        //     id: id,
-                        //     name: name,
-                        //     price: price,
-                        //     type: type,
-                        //     image: image);
+                        isCart == false
+                            ? addToFavorite(
+                                id: widget.id,
+                                name: widget.name,
+                                price: widget.price,
+                                type: widget.type,
+                                image: widget.image,
+                              )
+                            : removeToFavorite(
+                                name: widget.name,
+                              );
+                        setState(() {
+                          isCart = !isCart;
+                        });
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.shopping_cart,
                         size: 20,
-                        color: Colors.grey,
+                        color:
+                            isCart == false ? Colors.grey : Colors.greenAccent,
                       ),
                     )
                   ],
@@ -92,16 +107,23 @@ Future addToFavorite({
   required int id,
   required String name,
   required String type,
-  required double price,
+  required int price,
   required String image,
 }) async {
-  final users = FirebaseFirestore.instance.collection('Favorites').doc(type);
-  await users.set({
+  final users = FirebaseFirestore.instance.collection('Favorites').doc(name);
+  users.set({
     'id': id,
     'name': name,
     'price': price,
     'type': type,
     'image': image,
   });
-  return 'Created';
+  return true;
+}
+
+Future removeToFavorite({
+  required String name,
+}) async {
+  FirebaseFirestore.instance.collection('Favorites').doc(name).delete();
+  return false;
 }
