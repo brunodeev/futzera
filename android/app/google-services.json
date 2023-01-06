@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "157295647715",
+    "project_id": "futzera-app",
+    "storage_bucket": "futzera-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157295647715:android:909892239af7ee7dca5ed6",
+        "android_client_info": {
+          "package_name": "br.com.brunodeev.soccer_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157295647715-7r2mlnftp18v0f8bpgjns7de6lvjagji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1FnvBL1oKrhRp4I4LXxbi-RTh-VFwaGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157295647715-7r2mlnftp18v0f8bpgjns7de6lvjagji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

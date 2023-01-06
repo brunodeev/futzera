@@ -21,7 +21,7 @@ class CartPage extends StatelessWidget {
         title: const Text('Detalhes'),
       ),
       body: Column(
-        children: [Text('Olá')],
+        children: const [Text('Olá')],
       ),
     );
   }

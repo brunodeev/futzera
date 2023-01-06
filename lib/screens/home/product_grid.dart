@@ -38,6 +38,7 @@ class _ProductGridState extends State<ProductGrid> {
                 label: product[index].label,
                 list: product[index].images,
                 price: product[index].price.toStringAsFixed(2),
+                isLiked: true,
               ),
             ),
           );

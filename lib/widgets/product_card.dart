@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:soccer_app/constants/colors.dart';
 
-import '../mobx/controller.dart';
-
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   const ProductCard({
     required this.name,
     required this.image,
@@ -15,12 +12,6 @@ class ProductCard extends StatefulWidget {
   final String name, image;
   final double price;
 
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  var controller = Controller();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +27,7 @@ class _ProductCardState extends State<ProductCard> {
               topRight: Radius.circular(15),
             ),
             child: Image.asset(
-              widget.image,
+              image,
               height: 110,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -50,7 +41,7 @@ class _ProductCardState extends State<ProductCard> {
                 child: Row(
                   children: [
                     Text(
-                      widget.name,
+                      name,
                       style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
@@ -62,25 +53,17 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     Expanded(
                       child: Text(
-                        'R\$ ${widget.price.toStringAsFixed(2)}',
+                        'R\$ ${price.toStringAsFixed(2)}',
                         style: const TextStyle(
                             color: kSecondaryColor, fontSize: 14),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {
-                        setState(() {
-                          controller.getPress();
-                        });
-                      },
-                      icon: Observer(
-                        builder: (context) => Icon(
-                          Icons.shopping_cart,
-                          size: 20,
-                          color: controller.isPressed == false
-                              ? Colors.white
-                              : Colors.greenAccent,
-                        ),
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.shopping_cart,
+                        size: 20,
+                        color: Colors.greenAccent,
                       ),
                     )
                   ],

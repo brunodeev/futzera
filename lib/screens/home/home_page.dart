@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/app_title.dart';
 import 'package:soccer_app/constants/colors.dart';
-import 'package:soccer_app/mobx/controller.dart';
 import 'package:soccer_app/screens/Cart/cart_page.dart';
 import 'package:soccer_app/screens/home/home_body.dart';
 import 'package:soccer_app/screens/home/home_drawer.dart';
@@ -14,8 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final controllerSearch = Controller();
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -40,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CartPage(),
+                  builder: (context) => const CartPage(),
                 ),
               );
             },

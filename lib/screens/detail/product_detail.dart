@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:soccer_app/mobx/controller.dart';
 import '../../constants/colors.dart';
 
-class ProductDetail extends StatefulWidget {
+class ProductDetail extends StatelessWidget {
   const ProductDetail(
       {super.key,
       required this.label,
       required this.list,
-      required this.price});
+      required this.price,
+      required this.isLiked});
 
   final String label, price;
   final List<String> list;
+  final bool isLiked;
 
-  @override
-  State<ProductDetail> createState() => _ProductDetailState();
-}
-
-class _ProductDetailState extends State<ProductDetail> {
-  var controller = Controller();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,13 +42,13 @@ class _ProductDetailState extends State<ProductDetail> {
                   height: 350,
                   child: PageView.builder(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: widget.list.length,
+                    itemCount: list.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
-                          widget.list[index],
+                          list[index],
                           fit: BoxFit.cover,
                         ),
                       );
@@ -68,7 +62,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       SizedBox(
                         width: 352,
                         child: Text(
-                          widget.label,
+                          label,
                           style: const TextStyle(
                               color: kPrimaryColor,
                               fontSize: 20,
@@ -82,7 +76,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
                     children: [
-                      Text('R\$ ${widget.price}',
+                      Text('R\$ $price',
                           style: TextStyle(
                             color: kPrimaryColor.withOpacity(0.7),
                             fontSize: 20,
@@ -137,21 +131,9 @@ class _ProductDetailState extends State<ProductDetail> {
                         height: 50,
                         width: double.infinity,
                         child: TextButton(
-                          onPressed: () {
-                            setState(() {
-                              controller.getPress();
-                            });
-                          },
-                          child: Observer(
-                            builder: (context) {
-                              return Icon(
-                                Icons.shopping_cart,
-                                color: controller.isPressed == false
-                                    ? Colors.white
-                                    : Colors.greenAccent,
-                              );
-                            },
-                          ),
+                          onPressed: () {},
+                          child: const Icon(Icons.shopping_cart,
+                              color: Colors.red),
                         ),
                       ),
                     ),
