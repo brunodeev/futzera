@@ -65,12 +65,21 @@ class CartPage extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              child: const Text(
-                'Total: xxxxxx',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-                textAlign: TextAlign.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Total: 1.130,00',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Comprar'),
+                  ),
+                ],
               ),
             ),
           ),
