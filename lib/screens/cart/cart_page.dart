@@ -4,6 +4,7 @@ import 'package:soccer_app/data/firebase_data.dart';
 
 import '../../constants/colors.dart';
 import '../../widgets/product_card.dart';
+import '../../widgets/total_items_cart.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -58,30 +59,9 @@ class CartPage extends StatelessWidget {
               }
             },
           ),
-          Align(
+          const Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Total: 1.130,00',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Comprar'),
-                  ),
-                ],
-              ),
-            ),
+            child: TotalItemsCart(),
           ),
         ],
       ),
