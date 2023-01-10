@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 
 class TotalItemsCart extends StatelessWidget {
-  const TotalItemsCart({
+  const TotalItemsCart(
+    BuildContext context, {
     Key? key,
+    required this.sum,
   }) : super(key: key);
+
+  final double sum;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +33,9 @@ class TotalItemsCart extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Total: 1.130,00',
-                style: TextStyle(
+              Text(
+                'Total: $sum',
+                style: const TextStyle(
                   fontSize: 20,
                 ),
                 textAlign: TextAlign.center,

@@ -11,6 +11,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double sum = 0;
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -59,9 +60,12 @@ class CartPage extends StatelessWidget {
               }
             },
           ),
-          const Align(
+          Align(
             alignment: Alignment.bottomCenter,
-            child: TotalItemsCart(),
+            child: TotalItemsCart(
+              context,
+              sum: sum,
+            ),
           ),
         ],
       ),
