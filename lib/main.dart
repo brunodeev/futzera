@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/screens/home/home_page.dart';
+import 'package:soccer_app/screens/cart/cart_page.dart';
 
 main() => runApp(const MyApp());
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
               ),
               initialRoute: '/',
               routes: {
-                '/': (context) => const HomePage(),
+                '/': (context) => const CartPage(),
               },
             );
           }

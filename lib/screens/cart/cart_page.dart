@@ -23,38 +23,59 @@ class CartPage extends StatelessWidget {
         elevation: 0,
         title: const Text('Carrinho'),
       ),
-      body: StreamBuilder<QuerySnapshot>(
-          stream: getCartList(),
-          builder: (_, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.none:
-              case ConnectionState.waiting:
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.grey[900],
-                  ),
-                );
-              case ConnectionState.active:
-              case ConnectionState.done:
-                return ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (_, index) {
-                    final DocumentSnapshot doc = snapshot.data!.docs[index];
-                    return GestureDetector(
-                      child: ProductCard(
-                        id: doc['id'],
-                        name: doc['name'],
-                        type: doc['type'],
-                        price: doc['price'],
-                        image: doc['image'],
-                      ),
-                      onTap: () {},
-                    );
-                  },
-                );
-            }
-          }),
+      body: Stack(
+        children: [
+          StreamBuilder<QuerySnapshot>(
+            stream: getCartList(),
+            builder: (_, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.none:
+                case ConnectionState.waiting:
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.grey[900],
+                    ),
+                  );
+                case ConnectionState.active:
+                case ConnectionState.done:
+                  return ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (_, index) {
+                      final DocumentSnapshot doc = snapshot.data!.docs[index];
+                      return GestureDetector(
+                        child: ProductCard(
+                          id: doc['id'],
+                          name: doc['name'],
+                          type: doc['type'],
+                          price: doc['price'],
+                          image: doc['image'],
+                        ),
+                        onTap: () {},
+                      );
+                    },
+                  );
+              }
+            },
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              child: const Text(
+                'Total: xxxxxx',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
