@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_app/data/firebase_data.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../constants/colors.dart';
 
 class TotalItemsCart extends StatelessWidget {
-  const TotalItemsCart(
+  TotalItemsCart(
     BuildContext context, {
     Key? key,
   }) : super(key: key);
-
+  double total = 0;
   @override
   Widget build(BuildContext context) {
-    double sum = 0.00;
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    db.collection('Favorites').snapshots().listen(
+      (snapshot) {
+        for (DocumentSnapshot item in snapshot.docs) {
+          final dados = item.get('price');
+          total += dados;
+        }
+      },
+    );
 
     return StreamBuilder(
         stream: getCartList(),
@@ -40,7 +46,7 @@ class TotalItemsCart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Total: $sum',
+                      'Total: ${total.toStringAsFixed(2)}',
                       style: const TextStyle(
                         fontSize: 20,
                       ),
@@ -64,4 +70,8 @@ class TotalItemsCart extends StatelessWidget {
           );
         });
   }
+}
+
+RecuperarLista() {
+  return;
 }

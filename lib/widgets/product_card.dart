@@ -97,8 +97,12 @@ class _ProductCardState extends State<ProductCard> {
                       onTap: () {},
                       child: const Icon(
                         Icons.favorite,
-                        size: 20,
+                        size: 18,
+                        color: Colors.grey,
                       ),
+                    ),
+                    const SizedBox(
+                      width: 5,
                     ),
                   ],
                 ),
