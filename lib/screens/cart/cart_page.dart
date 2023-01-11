@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/data/firebase_data.dart';
+import 'package:soccer_app/widgets/cart_product_card.dart';
 
 import '../../constants/colors.dart';
 import '../../widgets/product_card.dart';
@@ -11,7 +12,6 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double sum = 0;
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -41,20 +41,14 @@ class CartPage extends StatelessWidget {
                 case ConnectionState.active:
                 case ConnectionState.done:
                   return ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (_, index) {
                       final DocumentSnapshot doc = snapshot.data!.docs[index];
-                      return GestureDetector(
-                        child: ProductCard(
-                          id: doc['id'],
+                      return (CartProductCard(
                           name: doc['name'],
-                          type: doc['type'],
-                          price: doc['price'],
                           image: doc['image'],
-                        ),
-                        onTap: () {},
-                      );
+                          price: doc['price']));
                     },
                   );
               }
@@ -64,7 +58,6 @@ class CartPage extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: TotalItemsCart(
               context,
-              sum: sum,
             ),
           ),
         ],

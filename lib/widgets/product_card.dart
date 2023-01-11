@@ -44,6 +44,7 @@ class _ProductCardState extends State<ProductCard> {
             ),
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding:
@@ -58,7 +59,7 @@ class _ProductCardState extends State<ProductCard> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15, right: 5),
+                padding: const EdgeInsets.only(top: 12, left: 15, right: 5),
                 child: Row(
                   children: [
                     Expanded(
@@ -68,8 +69,8 @@ class _ProductCardState extends State<ProductCard> {
                             color: kSecondaryColor, fontSize: 14),
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
+                    GestureDetector(
+                      onTap: () {
                         isCart == false
                             ? addToFavorite(
                                 id: widget.id,
@@ -85,13 +86,20 @@ class _ProductCardState extends State<ProductCard> {
                           isCart = !isCart;
                         });
                       },
-                      icon: Icon(
+                      child: Icon(
                         Icons.shopping_cart,
-                        size: 20,
+                        size: 18,
                         color:
                             isCart == false ? Colors.grey : Colors.greenAccent,
                       ),
-                    )
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Icon(
+                        Icons.favorite,
+                        size: 20,
+                      ),
+                    ),
                   ],
                 ),
               ),
