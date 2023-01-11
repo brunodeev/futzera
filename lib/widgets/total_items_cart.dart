@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_app/data/firebase_data.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../constants/colors.dart';
 
@@ -11,6 +14,8 @@ class TotalItemsCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double sum = 0.00;
+
     return StreamBuilder(
         stream: getCartList(),
         builder: (context, snapshot) {
@@ -34,9 +39,9 @@ class TotalItemsCart extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Total: 0.00',
-                      style: TextStyle(
+                    Text(
+                      'Total: $sum',
+                      style: const TextStyle(
                         fontSize: 20,
                       ),
                       textAlign: TextAlign.center,

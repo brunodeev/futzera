@@ -12,6 +12,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double sum = 0;
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -45,10 +46,13 @@ class CartPage extends StatelessWidget {
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (_, index) {
                       final DocumentSnapshot doc = snapshot.data!.docs[index];
+
                       return (CartProductCard(
-                          name: doc['name'],
-                          image: doc['image'],
-                          price: doc['price']));
+                        name: doc['name'],
+                        image: doc['image'],
+                        price: doc['price'],
+                        soma: sum,
+                      ));
                     },
                   );
               }
@@ -56,9 +60,7 @@ class CartPage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: TotalItemsCart(
-              context,
-            ),
+            child: TotalItemsCart(context),
           ),
         ],
       ),
