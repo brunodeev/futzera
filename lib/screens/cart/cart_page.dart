@@ -4,7 +4,6 @@ import 'package:soccer_app/data/firebase_data.dart';
 import 'package:soccer_app/widgets/cart_product_card.dart';
 
 import '../../constants/colors.dart';
-import '../../widgets/product_card.dart';
 import '../../widgets/total_items_cart.dart';
 
 class CartPage extends StatelessWidget {
@@ -12,7 +11,6 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double sum = 0;
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -41,20 +39,28 @@ class CartPage extends StatelessWidget {
                   );
                 case ConnectionState.active:
                 case ConnectionState.done:
-                  return ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (_, index) {
-                      final DocumentSnapshot doc = snapshot.data!.docs[index];
+                  return snapshot.data!.docs.isEmpty
+                      ? const Center(
+                          child: Text(
+                            'Seu carrinho está vazio!',
+                            style:
+                                TextStyle(color: kPrimaryColor, fontSize: 25),
+                          ),
+                        )
+                      : ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (_, index) {
+                            final DocumentSnapshot doc =
+                                snapshot.data!.docs[index];
 
-                      return (CartProductCard(
-                        name: doc['name'],
-                        image: doc['image'],
-                        price: doc['price'],
-                        soma: sum,
-                      ));
-                    },
-                  );
+                            return CartProductCard(
+                              name: doc['name'],
+                              image: doc['image'],
+                              price: doc['price'],
+                            );
+                          },
+                        );
               }
             },
           ),

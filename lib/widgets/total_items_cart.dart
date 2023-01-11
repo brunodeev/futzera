@@ -46,7 +46,7 @@ class TotalItemsCart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Total: ${total.toStringAsFixed(2)}',
+                      'Total: R\$ ${total.toStringAsFixed(2)}',
                       style: const TextStyle(
                         fontSize: 20,
                       ),
@@ -70,8 +70,4 @@ class TotalItemsCart extends StatelessWidget {
           );
         });
   }
-}
-
-RecuperarLista() {
-  return;
 }
