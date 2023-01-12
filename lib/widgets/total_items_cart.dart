@@ -30,13 +30,14 @@ class TotalItemsCart extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
+              height: 60,
               width: double.infinity,
               decoration: BoxDecoration(
                 boxShadow: const [
                   BoxShadow(
-                    spreadRadius: 0.1,
-                    blurRadius: 13,
-                    color: Color.fromARGB(255, 167, 167, 167),
+                    spreadRadius: 1,
+                    blurRadius: 8,
+                    color: Color.fromARGB(255, 207, 207, 207),
                   ),
                 ],
                 borderRadius: BorderRadius.circular(12),
@@ -63,7 +64,7 @@ class TotalItemsCart extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {},
-                      child: const Text('Confirmar'),
+                      child: const Text('Finalizar'),
                     ),
                   ],
                 ),

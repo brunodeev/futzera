@@ -83,7 +83,7 @@ class ProductDetail extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
                     children: [
-                      Text('R\$ $price',
+                      Text('R\$ ${price.toStringAsFixed(2)}',
                           style: TextStyle(
                             color: kPrimaryColor.withOpacity(0.7),
                             fontSize: 20,
@@ -139,8 +139,8 @@ class ProductDetail extends StatelessWidget {
                         width: double.infinity,
                         child: TextButton(
                           onPressed: () {},
-                          child: const Icon(Icons.shopping_cart,
-                              color: Colors.red),
+                          child:
+                              const Icon(Icons.favorite, color: Colors.white),
                         ),
                       ),
                     ),
