@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:soccer_app/screens/cart/cart_page.dart';
 import 'package:soccer_app/screens/home/home_page.dart';
 
 main() => runApp(const MyApp());

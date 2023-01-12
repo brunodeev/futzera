@@ -5,16 +5,23 @@ class ProductDetail extends StatelessWidget {
   const ProductDetail(
       {super.key,
       required this.label,
-      required this.list,
       required this.price,
-      required this.isLiked});
+      required this.isLiked,
+      required this.img1,
+      required this.img2,
+      required this.img3});
 
-  final String label, price;
-  final List<String> list;
+  final String label, img1, img2, img3;
+  final int price;
   final bool isLiked;
 
   @override
   Widget build(BuildContext context) {
+    List<String> list = [
+      img1,
+      img2,
+      img3,
+    ];
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(

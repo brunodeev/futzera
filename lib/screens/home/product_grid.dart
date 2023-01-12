@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/data/firebase_data.dart';
+import 'package:soccer_app/screens/detail/product_detail.dart';
 import '../../widgets/product_card.dart';
 
 class ProductGrid extends StatefulWidget {
@@ -47,7 +48,19 @@ class _ProductGridState extends State<ProductGrid> {
                         price: doc['price'],
                         image: doc['image'],
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetail(
+                                label: doc['name'],
+                                img1: doc['img1'],
+                                img2: doc['img2'],
+                                img3: doc['img3'],
+                                price: doc['price'],
+                                isLiked: true),
+                          ),
+                        );
+                      },
                     );
                   },
                 );
