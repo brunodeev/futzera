@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/colors.dart';
 import 'package:soccer_app/models/product_model.dart';
@@ -29,7 +28,7 @@ class _ProductCardState extends State<ProductCard> {
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
             ),
-            child: Image.asset(
+            child: Image.network(
               widget.product.imageUrl,
               height: 110,
               width: double.infinity,

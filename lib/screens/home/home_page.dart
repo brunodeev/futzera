@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/app_title.dart';
 import 'package:soccer_app/constants/colors.dart';
-import 'package:soccer_app/screens/Cart/cart_page.dart';
 import 'package:soccer_app/screens/home/home_body.dart';
 import 'package:soccer_app/screens/home/home_drawer.dart';
 
@@ -42,13 +40,7 @@ class _HomePageState extends State<HomePage> {
                     Icons.shopping_cart,
                     size: 20,
                   ),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const CartPage(),
-                      ),
-                    );
-                  },
+                  onPressed: () {},
                 ),
               ),
             ],

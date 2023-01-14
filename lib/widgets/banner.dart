@@ -15,11 +15,12 @@ class BannerImage extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 5, left: 5),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          image: DecorationImage(
-            image: AssetImage(index.image),
-            fit: BoxFit.cover,
-          )),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Image.network(
+        index.image,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

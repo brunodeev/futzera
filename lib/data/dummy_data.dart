@@ -19,7 +19,8 @@ final dummy_products = [
         'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
     category: 'Camisas',
     price: 350.00,
-    imageUrl: '',
+    imageUrl:
+        'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0cb077959b7f42afa674ae3500feb499_9366/Camisa_1_Real_Madrid_22-23_Branco_HA2654_01_laydown.jpg',
   ),
   Product(
     id: 'c3',
@@ -28,7 +29,8 @@ final dummy_products = [
         'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
     category: 'Camisas',
     price: 300.00,
-    imageUrl: '',
+    imageUrl:
+        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/027067c8-ec8e-4d05-93eb-376efbde9028/chelsea-fc-2022-23-stadium-home-dri-fit-football-shirt-4FnrmF.png',
   ),
   Product(
     id: 'c4',
@@ -37,7 +39,8 @@ final dummy_products = [
         'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
     category: 'Camisas',
     price: 350.00,
-    imageUrl: '',
+    imageUrl:
+        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9ebe8ee3-3e91-49a5-bd4c-2ff0ed44c383/liverpool-fc-2022-23-stadium-home-dri-fit-football-shirt-XhnBrv.png',
   ),
   Product(
     id: 'c5',
@@ -46,7 +49,8 @@ final dummy_products = [
         'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
     category: 'Camisas',
     price: 300.00,
-    imageUrl: '',
+    imageUrl:
+        'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/50d597bf601d41c7b2c9adde013c3036_9366/Camisa_2_Arsenal_22-23_Preto_H35902_21_model.jpg',
   ),
   Product(
     id: 'c6',
@@ -55,7 +59,8 @@ final dummy_products = [
         'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
     category: 'Camisas',
     price: 350.00,
-    imageUrl: '',
+    imageUrl:
+        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/16f2ed4b-7139-4529-a341-5c6a8d47ea24/inter-milan-2022-23-stadium-home-dri-fit-football-shirt-dK1VG8.png',
   ),
   Product(
     id: 'c7',
@@ -64,6 +69,7 @@ final dummy_products = [
         'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
     category: 'Camisas',
     price: 350.00,
-    imageUrl: '',
+    imageUrl:
+        'http://d3ugyf2ht6aenh.cloudfront.net/stores/946/221/products/camisa-paris-saint-germain-psg-home-2223-torcedor-nike-masculina-azul-marinho-11-6d94cd85d7f6c7361c16565255668301-640-0.webp',
   ),
 ];

@@ -10,18 +10,17 @@ class BannerImg {
 List<BannerImg> banner = [
   BannerImg(
     name: 'Promo',
-    image: 'assets/images/promo.jpg',
+    image:
+        'https://d3a0dcqzwu0eh0.cloudfront.net/images/350_cmtqohluafea4mjjx7ld.jpg',
   ),
   BannerImg(
     name: 'BrasilPromo',
-    image: 'assets/images/brazilpromo.jpg',
+    image:
+        'https://assets-mantosdofutebol.sfo2.digitaloceanspaces.com/wp-content/uploads/2021/06/Dia-dos-Namorados-FutFanatics.jpg',
   ),
   BannerImg(
     name: 'WorldCup',
-    image: 'assets/images/worldcup.jpg',
-  ),
-  BannerImg(
-    name: 'Messi&Cris',
-    image: 'assets/images/messi_and_cristiano.png',
+    image:
+        'https://images.mantosdofutebol.com.br/wp-content/uploads/2021/06/Dicas-de-camisas-de-futebol-para-o-casal-neste-Dia-dos-Namorados.jpg',
   ),
 ];
