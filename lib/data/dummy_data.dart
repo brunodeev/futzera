@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import '../models/product_model.dart';
 
 final dummy_products = [

@@ -6,8 +6,6 @@ import 'package:soccer_app/screens/Cart/cart_page.dart';
 import 'package:soccer_app/screens/home/home_body.dart';
 import 'package:soccer_app/screens/home/home_drawer.dart';
 
-import '../../data/firebase_data.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -52,41 +50,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-              ),
-              Positioned(
-                top: 12,
-                left: 25,
-                child: Container(
-                    height: 13,
-                    width: 13,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 91, 211, 153),
-                      shape: BoxShape.circle,
-                    ),
-                    child: StreamBuilder<QuerySnapshot>(
-                        stream: getCartList(),
-                        builder: (_, snapshot) {
-                          switch (snapshot.connectionState) {
-                            case ConnectionState.none:
-                            case ConnectionState.waiting:
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  color: Colors.grey[900],
-                                ),
-                              );
-                            case ConnectionState.active:
-                            case ConnectionState.done:
-                              return Center(
-                                child: Text(
-                                  snapshot.data!.docs.length.toString(),
-                                  style: const TextStyle(
-                                      fontSize: 9,
-                                      color: kPrimaryColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              );
-                          }
-                        })),
               ),
             ],
           ),

@@ -1,27 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/colors.dart';
+import 'package:soccer_app/models/product_model.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard({
-    required this.id,
-    required this.name,
-    required this.image,
     super.key,
-    required this.price,
-    required this.type,
+    required this.product,
   });
 
-  final int id;
-  final String name, image, type;
-  final int price;
-
+  final Product product;
   @override
   State<ProductCard> createState() => _ProductCardState();
 }
 
 class _ProductCardState extends State<ProductCard> {
-  var isCart = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +30,7 @@ class _ProductCardState extends State<ProductCard> {
               topRight: Radius.circular(15),
             ),
             child: Image.asset(
-              widget.image,
+              widget.product.imageUrl,
               height: 110,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -52,7 +45,7 @@ class _ProductCardState extends State<ProductCard> {
                 child: Row(
                   children: [
                     Text(
-                      widget.name,
+                      widget.product.title,
                       style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
@@ -64,33 +57,17 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     Expanded(
                       child: Text(
-                        'R\$ ${widget.price.toStringAsFixed(2)}',
+                        'R\$ ${widget.product.price.toStringAsFixed(2)}',
                         style: const TextStyle(
                             color: kSecondaryColor, fontSize: 14),
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        isCart == false
-                            ? addToFavorite(
-                                id: widget.id,
-                                name: widget.name,
-                                price: widget.price,
-                                type: widget.type,
-                                image: widget.image,
-                              )
-                            : removeToFavorite(
-                                name: widget.name,
-                              );
-                        setState(() {
-                          isCart = !isCart;
-                        });
-                      },
-                      child: Icon(
+                      onTap: () {},
+                      child: const Icon(
                         Icons.shopping_cart,
                         size: 18,
-                        color:
-                            isCart == false ? Colors.grey : Colors.greenAccent,
+                        color: Colors.grey,
                       ),
                     ),
                     GestureDetector(
@@ -113,29 +90,4 @@ class _ProductCardState extends State<ProductCard> {
       ),
     );
   }
-}
-
-Future addToFavorite({
-  required int id,
-  required String name,
-  required String type,
-  required int price,
-  required String image,
-}) async {
-  final users = FirebaseFirestore.instance.collection('Favorites').doc(name);
-  users.set({
-    'id': id,
-    'name': name,
-    'price': price,
-    'type': type,
-    'image': image,
-  });
-  return true;
-}
-
-Future removeToFavorite({
-  required String name,
-}) async {
-  FirebaseFirestore.instance.collection('Favorites').doc(name).delete();
-  return false;
 }

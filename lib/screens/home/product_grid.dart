@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:soccer_app/data/dummy_data.dart';
+import 'package:soccer_app/models/product_model.dart';
 import 'package:soccer_app/screens/detail/product_detail.dart';
 import '../../widgets/product_card.dart';
 
@@ -8,6 +10,8 @@ class ProductGrid extends StatefulWidget {
   @override
   State<ProductGrid> createState() => _ProductGridState();
 }
+
+final List<Product> loadedProducts = dummy_products;
 
 class _ProductGridState extends State<ProductGrid> {
   @override
@@ -20,27 +24,17 @@ class _ProductGridState extends State<ProductGrid> {
           mainAxisSpacing: 10,
           mainAxisExtent: 200,
           childAspectRatio: 0.5),
-      itemCount: snapshot.data!.docs.length,
+      itemCount: loadedProducts.length,
       itemBuilder: (_, index) {
-        final DocumentSnapshot doc = snapshot.data!.docs[index];
         return GestureDetector(
           child: ProductCard(
-            id: doc['id'],
-            name: doc['name'],
-            type: doc['type'],
-            price: doc['price'],
-            image: doc['image'],
+            product: loadedProducts[index],
           ),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => ProductDetail(
-                    label: doc['name'],
-                    img1: doc['img1'],
-                    img2: doc['img2'],
-                    img3: doc['img3'],
-                    price: doc['price'],
-                    isLiked: true),
+                builder: (context) =>
+                    ProductDetail(product: loadedProducts[index]),
               ),
             );
           },

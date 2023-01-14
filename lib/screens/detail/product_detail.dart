@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:soccer_app/models/product_model.dart';
 import '../../constants/colors.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail(
-      {super.key,
-      required this.label,
-      required this.price,
-      required this.isLiked,
-      required this.img1,
-      required this.img2,
-      required this.img3});
+  const ProductDetail({
+    super.key,
+    required this.product,
+  });
 
-  final String label, img1, img2, img3;
-  final int price;
-  final bool isLiked;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
-    List<String> list = [
-      img1,
-      img2,
-      img3,
-    ];
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -47,19 +37,12 @@ class ProductDetail extends StatelessWidget {
                       BoxDecoration(borderRadius: BorderRadius.circular(12)),
                   width: double.infinity,
                   height: 350,
-                  child: PageView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: list.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          list[index],
-                          fit: BoxFit.cover,
-                        ),
-                      );
-                    },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      product.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Padding(
@@ -69,7 +52,7 @@ class ProductDetail extends StatelessWidget {
                       SizedBox(
                         width: 352,
                         child: Text(
-                          label,
+                          product.title,
                           style: const TextStyle(
                               color: kPrimaryColor,
                               fontSize: 20,
@@ -83,7 +66,7 @@ class ProductDetail extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
                     children: [
-                      Text('R\$ ${price.toStringAsFixed(2)}',
+                      Text('R\$ ${product.price.toStringAsFixed(2)}',
                           style: TextStyle(
                             color: kPrimaryColor.withOpacity(0.7),
                             fontSize: 20,
