@@ -28,8 +28,8 @@ class _ProductGridState extends State<ProductGrid> {
           childAspectRatio: 0.5),
       itemCount: loadedProducts.length,
       itemBuilder: (_, index) {
-        return ChangeNotifierProvider(
-          create: (_) => loadedProducts[index],
+        return ChangeNotifierProvider.value(
+          value: loadedProducts[index],
           child: GestureDetector(
             child: const ProductCard(),
             onTap: () {
