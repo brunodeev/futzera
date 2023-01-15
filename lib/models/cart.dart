@@ -25,6 +25,16 @@ class Cart with ChangeNotifier {
     return total;
   }
 
+  bool isOnCart(Product product) {
+    bool isOnBadge;
+    if (_items.containsKey(product.id)) {
+      isOnBadge = true;
+    } else {
+      isOnBadge = false;
+    }
+    return isOnBadge;
+  }
+
   void addItem(Product product) {
     _items.putIfAbsent(
       product.id,

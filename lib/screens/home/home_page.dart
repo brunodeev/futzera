@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:soccer_app/constants/app_title.dart';
 import 'package:soccer_app/constants/colors.dart';
+import 'package:soccer_app/models/cart.dart';
 import 'package:soccer_app/screens/home/home_body.dart';
 import 'package:soccer_app/screens/home/home_drawer.dart';
+import 'package:soccer_app/widgets/badge.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +17,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       drawer: const SafeArea(
         child: HomeDrawer(),
@@ -31,21 +33,16 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: const AppTitle(),
         actions: [
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.shopping_cart,
-                    size: 20,
-                  ),
-                  onPressed: () {},
-                ),
-              ),
-            ],
-          ),
-          SizedBox(width: size.width * 0.03),
+          Consumer<Cart>(
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
+            builder: (context, cart, child) => Badge(
+              value: cart.itemsCount.toString(),
+              child: child!,
+            ),
+          )
         ],
       ),
       body: const HomeBody(),

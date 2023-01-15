@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soccer_app/constants/colors.dart';
+import 'package:soccer_app/models/cart.dart';
 import 'package:soccer_app/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -9,6 +10,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context);
+    final cart = Provider.of<Cart>(context);
 
     return Container(
       decoration: BoxDecoration(
@@ -57,12 +59,13 @@ class ProductCard extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        product.toggleFavorite();
+                        cart.addItem(product);
+                        print(cart.itemsCount);
                       },
                       child: Icon(
                         Icons.shopping_cart,
                         size: 18,
-                        color: product.isFavorite
+                        color: cart.isOnCart(product)
                             ? Colors.greenAccent
                             : Colors.grey,
                       ),

@@ -19,6 +19,7 @@ class _ProductGridState extends State<ProductGrid> {
     final List<Product> loadedProducts = provider.items;
 
     return GridView.builder(
+      shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

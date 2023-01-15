@@ -14,12 +14,12 @@ class BannerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 5, left: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Image.network(
-        index.image,
-        fit: BoxFit.cover,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Image.network(
+          index.image,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
