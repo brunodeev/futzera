@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:soccer_app/constants/colors.dart';
 import 'package:soccer_app/models/product_model.dart';
 
-class ProductCard extends StatefulWidget {
-  const ProductCard({
-    super.key,
-    required this.product,
-  });
+class ProductCard extends StatelessWidget {
+  const ProductCard({super.key});
 
-  final Product product;
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -29,7 +22,7 @@ class _ProductCardState extends State<ProductCard> {
               topRight: Radius.circular(15),
             ),
             child: Image.network(
-              widget.product.imageUrl,
+              product.imageUrl,
               height: 110,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -44,7 +37,7 @@ class _ProductCardState extends State<ProductCard> {
                 child: Row(
                   children: [
                     Text(
-                      widget.product.title,
+                      product.title,
                       style: const TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
@@ -56,17 +49,21 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     Expanded(
                       child: Text(
-                        'R\$ ${widget.product.price.toStringAsFixed(2)}',
+                        'R\$ ${product.price.toStringAsFixed(2)}',
                         style: const TextStyle(
                             color: kSecondaryColor, fontSize: 14),
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
+                      onTap: () {
+                        product.toggleFavorite();
+                      },
+                      child: Icon(
                         Icons.shopping_cart,
                         size: 18,
-                        color: Colors.grey,
+                        color: product.isFavorite
+                            ? Colors.greenAccent
+                            : Colors.grey,
                       ),
                     ),
                     GestureDetector(

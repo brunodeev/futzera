@@ -28,18 +28,19 @@ class _ProductGridState extends State<ProductGrid> {
           childAspectRatio: 0.5),
       itemCount: loadedProducts.length,
       itemBuilder: (_, index) {
-        return GestureDetector(
-          child: ProductCard(
-            product: loadedProducts[index],
+        return ChangeNotifierProvider(
+          create: (_) => loadedProducts[index],
+          child: GestureDetector(
+            child: const ProductCard(),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ProductDetail(product: loadedProducts[index]),
+                ),
+              );
+            },
           ),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) =>
-                    ProductDetail(product: loadedProducts[index]),
-              ),
-            );
-          },
         );
       },
     );
