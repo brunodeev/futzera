@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:soccer_app/models/cart.dart';
+
+import '../constants/colors.dart';
+
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Cart cart = Provider.of(context);
+    final items = cart.items.values.toList();
+
+    return Scaffold(
+      appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(15),
+            bottomRight: Radius.circular(15),
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: kPrimaryColor,
+        elevation: 0,
+        title: const Text('Carrinho'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) => Text(items[index].title),
+              itemCount: items.length,
+            ),
+          ),
+          Card(
+            margin: const EdgeInsets.all(15),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Total: ',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  Chip(
+                    backgroundColor: kPrimaryColor,
+                    label: Text(
+                      'R\$${cart.totalAmount}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(foregroundColor: kPrimaryColor),
+                    child: const Text('COMPRAR',
+                        style: TextStyle(color: kPrimaryColor)),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/app_title.dart';
-import 'package:soccer_app/screens/home/drawer_constants.dart';
+import 'package:soccer_app/widgets/drawer_constants.dart';
 
-import '../../constants/colors.dart';
+import '../constants/colors.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});

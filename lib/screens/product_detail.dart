@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_app/models/product_model.dart';
-import '../../constants/colors.dart';
+import '../constants/colors.dart';
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soccer_app/models/product_list.dart';
 import 'package:soccer_app/models/product_model.dart';
-import 'package:soccer_app/screens/detail/product_detail.dart';
-import '../../widgets/product_card.dart';
+import 'package:soccer_app/screens/product_detail.dart';
+import '../widgets/product_card.dart';
 
 class ProductGrid extends StatefulWidget {
   const ProductGrid({super.key});

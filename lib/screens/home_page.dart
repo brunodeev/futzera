@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soccer_app/constants/app_title.dart';
 import 'package:soccer_app/constants/colors.dart';
+import 'package:soccer_app/constants/routes.dart';
 import 'package:soccer_app/models/cart.dart';
-import 'package:soccer_app/screens/home/home_body.dart';
-import 'package:soccer_app/screens/home/home_drawer.dart';
+import 'package:soccer_app/screens/home_body.dart';
+import 'package:soccer_app/widgets/home_drawer.dart';
 import 'package:soccer_app/widgets/badge.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,7 +37,9 @@ class _HomePageState extends State<HomePage> {
           Consumer<Cart>(
             child: IconButton(
               icon: const Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.CART);
+              },
             ),
             builder: (context, cart, child) => Badge(
               value: cart.itemsCount.toString(),
