@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
               value: cart.itemsCount.toString(),
               child: child!,
             ),
-          )
+          ),
         ],
       ),
       body: const HomeBody(),

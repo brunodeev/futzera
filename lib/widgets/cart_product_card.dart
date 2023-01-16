@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:soccer_app/models/cart_item.dart';
 
 class CartProductCard extends StatelessWidget {
   const CartProductCard({
     super.key,
-    required this.name,
-    required this.image,
-    required this.price,
+    required this.cartItem,
   });
 
-  final String name, image;
-  final int price;
+  final CartItem cartItem;
 
   @override
   Widget build(BuildContext context) {
@@ -22,32 +20,19 @@ class CartProductCard extends StatelessWidget {
           color: Colors.grey.withOpacity(0.05),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: SizedBox(
-                height: 80,
-                width: 80,
-                child: Image.asset(
-                  image,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  cartItem.title,
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  'R\$ ${price.toStringAsFixed(2)}',
+                  'R\$ ${cartItem.price.toStringAsFixed(2)}',
                 ),
               ],
             ),

@@ -1,4 +1,6 @@
-class CartItem {
+import 'package:flutter/material.dart';
+
+class CartItem with ChangeNotifier {
   final String id;
   final String productId;
   final String title;

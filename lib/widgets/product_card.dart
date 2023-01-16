@@ -60,7 +60,6 @@ class ProductCard extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         cart.addItem(product);
-                        print(cart.itemsCount);
                       },
                       child: Icon(
                         Icons.shopping_cart,

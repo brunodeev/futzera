@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soccer_app/constants/app_title.dart';
+import 'package:soccer_app/constants/routes.dart';
 import 'package:soccer_app/widgets/drawer_constants.dart';
 
 import '../constants/colors.dart';
@@ -31,12 +32,16 @@ class HomeDrawer extends StatelessWidget {
               ],
             ),
             TextDrawer(
-                text: 'Página Inicial',
-                route: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/', (route) => false);
-                }),
-            TextDrawer(text: 'Categorias', route: () {})
+              text: 'Página Inicial',
+              route: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/', (route) => false);
+              },
+            ),
+            TextDrawer(
+              text: 'Categorias',
+              route: () {},
+            ),
           ],
         ),
       ),

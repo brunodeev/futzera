@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soccer_app/models/cart.dart';
+import 'package:soccer_app/widgets/cart_product_card.dart';
 
 import '../constants/colors.dart';
 
@@ -30,7 +31,8 @@ class CartPage extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => Text(items[index].title),
+              itemBuilder: (context, index) =>
+                  CartProductCard(cartItem: items[index]),
               itemCount: items.length,
             ),
           ),

@@ -35,6 +35,21 @@ class Cart with ChangeNotifier {
     return isOnBadge;
   }
 
+  void addItemCart(Product product) {
+    if (_items.containsKey(product.id)) {
+      _items.update(
+        product.id,
+        (existItem) => CartItem(
+          id: existItem.id,
+          productId: existItem.productId,
+          title: existItem.title,
+          quantity: existItem.quantity,
+          price: existItem.price,
+        ),
+      );
+    }
+  }
+
   void addItem(Product product) {
     _items.putIfAbsent(
       product.id,
