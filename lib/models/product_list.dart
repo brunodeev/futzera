@@ -13,11 +13,6 @@ class ProductList with ChangeNotifier {
     return [..._list];
   }
 
-  void showFavoriteOnly() {
-    _showFavoriteOnly = true;
-    notifyListeners();
-  }
-
   void showAll() {
     _showFavoriteOnly = false;
     notifyListeners();

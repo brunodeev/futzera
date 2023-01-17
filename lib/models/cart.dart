@@ -35,32 +35,55 @@ class Cart with ChangeNotifier {
     return isOnBadge;
   }
 
-  void addItemCart(Product product) {
-    if (_items.containsKey(product.id)) {
-      _items.update(
-        product.id,
-        (existItem) => CartItem(
-          id: existItem.id,
-          productId: existItem.productId,
-          title: existItem.title,
-          quantity: existItem.quantity,
-          price: existItem.price,
-        ),
-      );
+  void addOneItemToBasket(CartItem c) {
+    notifyListeners();
+  }
+
+  void removeOneItemToBasket(CartItem c) {
+    bool found = _items.containsKey(c.id);
+    if (found) {
+      c.quantity - 1;
+    } else {
+      c.quantity;
     }
   }
 
+  getTotalCart() {
+    int total = 0;
+    for (int i = 0; i <= _items.length; i++) {
+      if (_items[i] != null) {
+        total += _items[i]!.quantity;
+      } else {
+        total = total;
+      }
+    }
+    return total;
+  }
+
   void addItem(Product product) {
-    _items.putIfAbsent(
-      product.id,
-      () => CartItem(
-        id: Random().nextDouble().toString(),
-        productId: product.id,
-        title: product.title,
-        quantity: 1,
-        price: product.price,
-      ),
-    );
+    if (_items.containsKey(product.id)) {
+      _items.update(
+        product.id,
+        (existingItem) => CartItem(
+          id: existingItem.id,
+          productId: existingItem.productId,
+          title: existingItem.title,
+          quantity: existingItem.quantity + 1,
+          price: existingItem.price,
+        ),
+      );
+    } else {
+      _items.putIfAbsent(
+        product.id,
+        () => CartItem(
+          id: Random().nextDouble().toString(),
+          productId: product.id,
+          title: product.title,
+          quantity: 1,
+          price: product.price,
+        ),
+      );
+    }
     notifyListeners();
   }
 

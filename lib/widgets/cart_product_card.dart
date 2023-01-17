@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:soccer_app/models/cart.dart';
 import 'package:soccer_app/models/cart_item.dart';
 
 class CartProductCard extends StatelessWidget {
@@ -11,6 +13,7 @@ class CartProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cart = Provider.of<Cart>(context);
     return Padding(
       padding: const EdgeInsets.only(left: 8, top: 2, right: 8),
       child: Container(
@@ -35,6 +38,25 @@ class CartProductCard extends StatelessWidget {
                   'R\$ ${cartItem.price.toStringAsFixed(2)}',
                 ),
               ],
+            ),
+            IconButton(
+              onPressed: () {
+                cart.addOneItemToBasket(cartItem);
+                print(cart.getTotalCart().toString());
+              },
+              icon: const Icon(Icons.remove),
+            ),
+            Consumer<Cart>(
+              builder: (context, cart, child) => Text(
+                cart.getTotalCart().toString(),
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                cart.removeOneItemToBasket(cartItem);
+                print(cart.getTotalCart().toString());
+              },
+              icon: const Icon(Icons.add),
             ),
           ],
         ),
