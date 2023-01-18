@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soccer_app/constants/app_title.dart';
 import 'package:soccer_app/constants/colors.dart';
-import 'package:soccer_app/constants/routes.dart';
 import 'package:soccer_app/models/cart.dart';
+import 'package:soccer_app/screens/cart_page.dart';
 import 'package:soccer_app/screens/home_body.dart';
 import 'package:soccer_app/widgets/home_drawer.dart';
 import 'package:soccer_app/widgets/badge.dart';
@@ -38,7 +38,9 @@ class _HomePageState extends State<HomePage> {
             child: IconButton(
               icon: const Icon(Icons.shopping_cart),
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.CART);
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const CartPage()),
+                );
               },
             ),
             builder: (context, cart, child) => Badge(

@@ -13,14 +13,36 @@ class CartProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cart = Provider.of<Cart>(context);
-    return Padding(
-      padding: const EdgeInsets.only(left: 8, top: 2, right: 8),
+    return Dismissible(
+      key: ValueKey(cartItem.id),
+      direction: DismissDirection.endToStart,
+      background: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.red,
+        ),
+        alignment: Alignment.centerRight,
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: const Icon(
+          Icons.delete,
+          color: Colors.white,
+          size: 30,
+        ),
+      ),
+      onDismissed: (_) {
+        Provider.of<Cart>(
+          context,
+          listen: false,
+        ).removeItem(cartItem.productId);
+      },
       child: Container(
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         height: 80,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: Colors.grey.withOpacity(0.05),
+          color: Colors.grey.withOpacity(0.1),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,25 +61,7 @@ class CartProductCard extends StatelessWidget {
                 ),
               ],
             ),
-            IconButton(
-              onPressed: () {
-                cart.addOneItemToBasket(cartItem);
-                print(cart.getTotalCart().toString());
-              },
-              icon: const Icon(Icons.remove),
-            ),
-            Consumer<Cart>(
-              builder: (context, cart, child) => Text(
-                cart.getTotalCart().toString(),
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                cart.removeOneItemToBasket(cartItem);
-                print(cart.getTotalCart().toString());
-              },
-              icon: const Icon(Icons.add),
-            ),
+            Text('${cartItem.quantity}x'),
           ],
         ),
       ),

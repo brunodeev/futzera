@@ -23,7 +23,7 @@ class ProductDetail extends StatelessWidget {
         centerTitle: true,
         backgroundColor: kPrimaryColor,
         elevation: 0,
-        title: const Text('Detalhes'),
+        title: Text(product.title),
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -52,7 +52,7 @@ class ProductDetail extends StatelessWidget {
                       SizedBox(
                         width: 352,
                         child: Text(
-                          product.title,
+                          product.description,
                           style: const TextStyle(
                               color: kPrimaryColor,
                               fontSize: 20,

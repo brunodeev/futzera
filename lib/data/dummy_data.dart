@@ -6,7 +6,7 @@ final dummy_products = [
   Product(
     id: 'c1',
     title: 'Barcelona',
-    description: 'Camisa principal do FC Barcelona para a temporada 2022/23.',
+    description: 'Camisa FC Barcelona 2022/23',
     category: 'Camisas',
     price: 350.00,
     imageUrl:
@@ -15,8 +15,7 @@ final dummy_products = [
   Product(
     id: 'c2',
     title: 'Real Madrid',
-    description:
-        'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
+    description: 'Camisa Real Madrid 2022/23',
     category: 'Camisas',
     price: 350.00,
     imageUrl:
@@ -25,8 +24,7 @@ final dummy_products = [
   Product(
     id: 'c3',
     title: 'Chelsea',
-    description:
-        'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
+    description: 'Camisa Chelsea 2022/23',
     category: 'Camisas',
     price: 300.00,
     imageUrl:
@@ -35,8 +33,7 @@ final dummy_products = [
   Product(
     id: 'c4',
     title: 'Liverpool',
-    description:
-        'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
+    description: 'Camisa Liverpool 2022/23',
     category: 'Camisas',
     price: 350.00,
     imageUrl:
@@ -45,8 +42,7 @@ final dummy_products = [
   Product(
     id: 'c5',
     title: 'Arsenal',
-    description:
-        'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
+    description: 'Camisa Arsenal 2022/23',
     category: 'Camisas',
     price: 300.00,
     imageUrl:
@@ -55,8 +51,7 @@ final dummy_products = [
   Product(
     id: 'c6',
     title: 'Inter de Milão',
-    description:
-        'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
+    description: 'Camisa Inter de Milão 2022/23',
     category: 'Camisas',
     price: 350.00,
     imageUrl:
@@ -65,8 +60,7 @@ final dummy_products = [
   Product(
     id: 'c7',
     title: 'PSG',
-    description:
-        'Camisa principal da Seleção Brasileira para a temporada 2022/23.',
+    description: 'Camisa PSG 2022/23',
     category: 'Camisas',
     price: 350.00,
     imageUrl:
