@@ -5,18 +5,20 @@ class TextDrawer extends StatelessWidget {
     Key? key,
     required this.text,
     required this.route,
+    required this.icon,
   }) : super(key: key);
 
   final String text;
+  final Icon icon;
   final Function() route;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: GestureDetector(
-        onTap: route,
-        child: Text(
+    return GestureDetector(
+      onTap: route,
+      child: ListTile(
+        leading: icon,
+        title: Text(
           text,
           style: TextStyle(
             fontSize: 15,
