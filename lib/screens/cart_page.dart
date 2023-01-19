@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soccer_app/models/cart.dart';
+import 'package:soccer_app/models/order_list.dart';
 import 'package:soccer_app/widgets/cart_product_card.dart';
 
 import '../constants/colors.dart';
@@ -60,7 +61,10 @@ class CartPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<OrderList>(context).addOrder(cart);
+                      cart.clear();
+                    },
                     style: TextButton.styleFrom(foregroundColor: kPrimaryColor),
                     child: const Text('COMPRAR',
                         style: TextStyle(color: kPrimaryColor)),
