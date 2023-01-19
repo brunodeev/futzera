@@ -14,15 +14,18 @@ class TextDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: route,
-      child: ListTile(
-        leading: icon,
-        title: Text(
-          text,
-          style: TextStyle(
-            fontSize: 15,
-            color: Colors.white.withOpacity(0.7),
+    return Padding(
+      padding: const EdgeInsets.only(left: 5),
+      child: GestureDetector(
+        onTap: route,
+        child: ListTile(
+          leading: icon,
+          title: Text(
+            text,
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white.withOpacity(0.7),
+            ),
           ),
         ),
       ),
