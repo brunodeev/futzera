@@ -25,6 +25,14 @@ class Cart with ChangeNotifier {
     return total;
   }
 
+  set totalItens(int quant) {
+    _items.forEach(
+      (key, cartItem) {
+        cartItem.quantity = quant;
+      },
+    );
+  }
+
   bool isOnCart(Product product) {
     bool isOnBadge;
     if (_items.containsKey(product.id)) {

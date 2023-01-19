@@ -4,7 +4,7 @@ class CartItem with ChangeNotifier {
   final String id;
   final String productId;
   final String title;
-  final int quantity;
+  int quantity;
   final double price;
 
   CartItem({
