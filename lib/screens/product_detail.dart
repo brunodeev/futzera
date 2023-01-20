@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:soccer_app/models/product_model.dart';
+import 'package:soccer_app/screens/cart_page.dart';
 import '../constants/colors.dart';
+import '../constants/routes.dart';
+import '../models/cart.dart';
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({
@@ -12,6 +16,7 @@ class ProductDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -94,36 +99,19 @@ class ProductDetail extends StatelessWidget {
                         ),
                         height: 50,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            cart.addItem(product);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CartPage(),
+                              ),
+                            );
+                          },
                           child: const Text(
                             'Comprar',
                             style: TextStyle(color: Colors.white, fontSize: 17),
                           ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 5),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: kPrimaryColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: kPrimaryColor.withOpacity(0.4),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        height: 50,
-                        width: double.infinity,
-                        child: TextButton(
-                          onPressed: () {},
-                          child:
-                              const Icon(Icons.favorite, color: Colors.white),
                         ),
                       ),
                     ),

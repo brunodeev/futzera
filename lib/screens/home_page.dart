@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final Cart cart = Provider.of(context);
     return Scaffold(
       drawer: const SafeArea(
         child: HomeDrawer(),
@@ -34,20 +35,30 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: const AppTitle(),
         actions: [
-          Consumer<Cart>(
-            child: IconButton(
+          if (cart.itemsCount < 1)
+            IconButton(
               icon: const Icon(Icons.shopping_cart),
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const CartPage()),
                 );
               },
-            ),
-            builder: (context, cart, child) => Badge(
-              value: cart.itemsCount.toString(),
-              child: child!,
-            ),
-          ),
+            )
+          else
+            Consumer<Cart>(
+              child: IconButton(
+                icon: const Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const CartPage()),
+                  );
+                },
+              ),
+              builder: (context, cart, child) => Badge(
+                value: cart.itemsCount.toString(),
+                child: child!,
+              ),
+            )
         ],
       ),
       body: const HomeBody(),
