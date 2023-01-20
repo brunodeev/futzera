@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soccer_app/models/order_list.dart';
+import 'package:soccer_app/widgets/order.dart';
 
 import '../constants/colors.dart';
 import '../widgets/home_drawer.dart';
@@ -29,8 +30,8 @@ class OrdersPage extends StatelessWidget {
       ),
       body: ListView.builder(
         itemCount: orders.items.length,
-        itemBuilder: (context, index) => Text(
-          orders.items[index].total.toString(),
+        itemBuilder: (context, index) => OrderWidget(
+          order: orders.items[index],
         ),
       ),
     );
