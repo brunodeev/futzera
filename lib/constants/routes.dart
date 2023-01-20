@@ -4,4 +4,5 @@ class Routes {
   static const HOME = '/';
   static const CART = '/cart';
   static const ORDER = '/order';
+  static const FAVORITES = '/favorites';
 }

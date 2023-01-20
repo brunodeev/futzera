@@ -4,6 +4,7 @@ import 'package:soccer_app/constants/routes.dart';
 import 'package:soccer_app/models/cart.dart';
 import 'package:soccer_app/models/order_list.dart';
 import 'package:soccer_app/models/product_list.dart';
+import 'package:soccer_app/screens/favorite_page.dart';
 import 'package:soccer_app/screens/home_page.dart';
 import 'package:soccer_app/screens/orders_page.dart';
 
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const HomePage(),
           Routes.ORDER: (context) => const OrdersPage(),
+          Routes.FAVORITES: (context) => const FavoritePage(),
         },
       ),
     );

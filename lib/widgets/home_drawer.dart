@@ -49,6 +49,16 @@ class HomeDrawer extends StatelessWidget {
               Navigator.pushNamed(context, Routes.ORDER);
             },
           ),
+          TextDrawer(
+            icon: const Icon(
+              Icons.favorite_rounded,
+              color: Colors.white,
+            ),
+            text: 'Favoritos',
+            route: () {
+              Navigator.pushNamed(context, Routes.FAVORITES);
+            },
+          ),
         ],
       ),
     );

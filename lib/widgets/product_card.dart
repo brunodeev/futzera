@@ -70,11 +70,17 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
-                        Icons.favorite,
+                      onTap: () {
+                        product.toggleFavorite();
+                      },
+                      child: Icon(
+                        product.isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
                         size: 18,
-                        color: Colors.grey,
+                        color: product.isFavorite
+                            ? Colors.greenAccent
+                            : Colors.grey,
                       ),
                     ),
                     const SizedBox(
