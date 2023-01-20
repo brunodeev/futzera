@@ -29,7 +29,7 @@ class FavoritePage extends StatelessWidget {
         elevation: 0,
         title: const Text('Favoritos'),
       ),
-      drawer: const HomeDrawer(),
+      drawer: const SafeArea(child: HomeDrawer()),
       body: ListView.builder(
         itemCount: loadedProducts.length,
         itemBuilder: (context, index) {
