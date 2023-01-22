@@ -36,8 +36,9 @@ class _ProductGridState extends State<ProductGrid> {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) =>
-                      ProductDetail(product: loadedProducts[index]),
+                  builder: (context) => ProductDetail(
+                    product: loadedProducts[index],
+                  ),
                 ),
               );
             },

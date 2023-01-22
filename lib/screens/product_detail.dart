@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:soccer_app/models/product_model.dart';
 import 'package:soccer_app/screens/cart_page.dart';
 import '../constants/colors.dart';
-import '../constants/routes.dart';
 import '../models/cart.dart';
 
 class ProductDetail extends StatelessWidget {

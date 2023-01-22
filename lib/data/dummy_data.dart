@@ -10,7 +10,7 @@ final dummy_products = [
     category: 'Camisas',
     price: 350.00,
     imageUrl:
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/6ee5fa81-be9c-4d0c-a48a-3d0db669c878/fc-barcelona-2022-23-stadium-home-dri-fit-football-shirt-Hn9LCv.png',
+        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9d6bc79c-1523-457d-bdd0-3c3cc29da114/fc-barcelona-2022-23-stadium-home-dri-fit-football-shirt-HFV375.png',
   ),
   Product(
     id: 'c2',
